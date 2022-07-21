@@ -1,0 +1,61 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+    <!-- Navbar Start -->
+    {%include 'sections/navbar.html' %}    
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    {%include 'sections/header.html' %}    
+    <!-- Header End -->
+
+    <!-- About Start -->
+    {%include 'sections/about.html' %}    
+    <!-- About End -->
+
+    <!-- Service Start -->
+    <!-- {%include 'sections/services.html' %}     -->
+    <!-- Service End -->
+
+
+    {%include 'sections/expertise.html' %}    
+
+    {%include 'sections/competitions.html' %}    
+
+    <!-- --Projects started-- -->
+    {%include 'sections/projects.html' %}    
+    <!-- --Projects completed-- -->
+
+
+<!-- Blog start -->
+
+{%include 'sections/blog.html' %}
+
+<!-- Blog end -->
+
+    <!-- Testimonial Start -->
+    {%include 'sections/testimonial.html' %}    
+    <!-- Testimonial End -->
+
+
+    <!-- Contact Start -->
+    {%include 'sections/contact.html' %}
+    <!-- Contact End -->
+
+
+    <!-- Map Start -->
+    <div class="container-xxl pt-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl pt-5 px-0">
+            <div class="bg-dark">
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3446.4956151188294!2d71.48411371483316!3d30.251456881807524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe07c723b11a16527!2zMzDCsDE1JzA1LjIiTiA3McKwMjknMTAuNyJF!5e0!3m2!1sen!2s!4v1658253919715!5m2!1sen!2s"
+                frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Map End -->
+
+{% endblock %}

@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  django_gunicorn: #can be any name, this name should match in default conf
+    volumes:
+      - static_vol:/app/sub_app/static 
+      - media_vol:/app/sub_app/media
+    env_file:
+      - .env
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_vol:/app/sub_app/static
+      - media_vol:/app/sub_app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - django_gunicorn
+
+volumes:
+  static_vol:
+  media_vol:

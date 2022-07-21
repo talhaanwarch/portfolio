@@ -1,0 +1,22 @@
+{%extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row ">
+        {% for post in context %}
+        <div class="col-md-8">
+            <h1>{{ post.title}}</h1>
+            {{ post.content |truncatewords_html:20 | safe}}   
+            <a href="/blog/{{post.slug}}" >Read More..</a>
+        </div>
+        <div class="col-md-4">
+            <img src="/media/{{post.image}}" class="img-thumbnail" width="250px">
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
