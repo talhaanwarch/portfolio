@@ -1,9 +1,9 @@
 FROM python:3.8.13-slim-buster
 
 WORKDIR /app
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip --no-cache-dir
 COPY ./requirements.txt ./
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
 
 COPY ./portfolio_app ./
 

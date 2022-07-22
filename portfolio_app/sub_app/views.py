@@ -19,11 +19,12 @@ def send_eamil(request):
 
 def home(request):
 	posts = models.Post.objects.all()[:3]
+	papers = models.Papers.objects.all()
 	if request.method=='POST':
 		send_eamil(request)
 		return render(request,'index.html',{'context':posts,'mail_msg':'Email received'})
 
-	return render(request,'index.html',{'context':posts})
+	return render(request,'index.html',{'blogs':posts,"papers":papers})
 
 def blog_page(request):
 	posts = models.Post.objects.all()
@@ -37,12 +38,3 @@ def single_post(request, slug):
 
 def demo_page(request):
     return render(request, 'demo.html', {'context': 'post'})
-
-# def contact(request):
-# 	if request.method=='POST':
-# 		print(request)
-# 	return render(request,'index.html',{})
-		# name=
-		# email=
-		# subject=
-		# message=

@@ -76,10 +76,22 @@ WSGI_APPLICATION = 'main_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('db_name'),
+        'USER':config('db_user'),
+        'PASSWORD':config('db_pass'),
+        'HOST':config('db_host'),
+        'PORT':5432,
     }
 }
 
@@ -108,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Karachi'
 
 USE_I18N = True
 
@@ -132,7 +144,6 @@ STATIC_ROOT = os.path.join(BASE_DIR,'sub_app', 'static')
 #the above give me 500 error
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # MODELS = os.path.join(BASE_DIR, 'sub_app/py_templates')
-
 
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_HOST = config('EMAIL_HOST')

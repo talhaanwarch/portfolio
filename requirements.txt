@@ -6,3 +6,4 @@ django-js-asset==2.0.0
 Pillow==9.2.0
 gunicorn
 python-decouple
+psycopg2-binary
