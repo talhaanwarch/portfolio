@@ -3,7 +3,7 @@ version: '3'
 services:
   django_app: #can be any name, this name should match in default conf
     volumes:
-      - static_vol:/app/sub_app/static 
+      - static_vol:/app/sub_app/static
       - media_vol:/app/sub_app/media
     env_file:
       - .env
