@@ -21,17 +21,20 @@
                 <hr class="w-100">
                 <p class="mb-2">Follow me:</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-square btn-primary me-2" href="https://twitter.com/chtalhaanwar"><i class="fab fa-twitter"></i></a>
+                    <!-- <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a> -->
+                    <a class="btn btn-square btn-primary me-2" href="https://www.youtube.com/channel/UCaMjFHny5hYsVzoRZRXNO5Q"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-primary me-2" href="https://www.linkedin.com/in/chtalhaanwar/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             {% if mail_msg %}
             <h3>Mail Sent</h3>
             {% else %}
+            
             <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <p class="mb-4">I will try to respond asap</a>.</p>
+
+
                 <form action = "" method = "POST">
                     {% csrf_token %}
                     <div class="row g-3">
@@ -64,6 +67,8 @@
                         </div>
                     </div>
                 </form>
+
+
             </div>
             {% endif %}
         </div>
