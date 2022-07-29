@@ -2,7 +2,7 @@ from django.urls import path
 from . import models
 from django.shortcuts import render
 from django.core.mail import send_mail
-
+import requests
 
 def send_eamil(request):
 	name=request.POST['name']
@@ -36,5 +36,11 @@ def single_post(request, slug):
     return render(request, 'post.html', {'context': post})
 
 
-def demo_page(request):
-    return render(request, 'demo.html', {'context': 'post'})
+def nlp_demo(request):
+	text=request.POST.get('textareaName', False)#MultiValueDictKey
+	print(text)
+	if text:
+		sentiment=requests.get("https://brv3cigampej24dwf4xujkomhy0ewcwi.lambda-url.us-east-1.on.aws/{}".format(text))
+		return render(request, 'demo.html',sentiment.json())
+	else:
+		return render(request, 'demo.html',{})

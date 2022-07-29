@@ -20,8 +20,8 @@
 }
 
 .py-6 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 
@@ -464,7 +464,7 @@
 /* -------------cards-------------------- */
 body{
     background: #F4F7FD;
-    margin-top:20px;
+    margin-top:10px;
 }
 
 .card-margin {
@@ -772,4 +772,30 @@ body{
 
 .widget-49 .widget-49-meeting-action a {
   text-transform: uppercase;
+}
+
+
+/* ******************DEMO CSS*************************** */
+/* -------------------------------- 
+
+File#: _1_character-count
+Title: Character Count
+Descr: Show the number of remaining characters while typing
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.character-count__helper {
+  text-align: right;
+}
+
+.character-count__helper--dynamic {
+  display: none;
+}
+
+.character-count__helper--static {
+  display: none;
+}
+
+.character-count__helper--dynamic {
+  display: block;
 }
