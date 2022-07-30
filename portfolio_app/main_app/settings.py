@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sub_app',
-    'ckeditor'#for django admin text editor
+    'ckeditor',#for django admin text editor,
+    'storages',#boto3 s3 storages
 ]
 
 MIDDLEWARE = [
@@ -128,10 +129,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'sub_app','media') 
-MEDIA_URL = '/media/'
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'sub_app','media') 
+# MEDIA_URL = '/media/'
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'sub_app', 'static')
@@ -150,3 +150,18 @@ EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
+AWS_STORAGE_BUCKET_NAME = config('bucket_name')
+AWS_ACCESS_KEY_ID =config('aws_access')
+AWS_SECRET_ACCESS_KEY = config('aws_secret')
+
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+# # AWS_LOCATION = 'static'
+
+# # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'main_app.storages.MediaStore'

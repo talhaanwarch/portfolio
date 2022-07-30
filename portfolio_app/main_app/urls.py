@@ -23,5 +23,5 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('sub_app.urls')),
-    re_path(r'^media/(?P<path>.*)$', serve, kwargs={'document_root': settings.MEDIA_ROOT})
+    # re_path(r'^media/(?P<path>.*)$', serve, kwargs={'document_root': settings.MEDIA_ROOT})
 ]

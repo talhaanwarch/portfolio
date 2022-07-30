@@ -1,5 +1,7 @@
 {%extends 'base.html' %}
 {% load static %}
+{% block title %} Blogs | Machine Learning model devolopment and deployment {% endblock %}
+{% block description %} In the blog you can read about devolopment and deployment of machine learning and deep learning models. {% endblock %}
 
 <!-- This is my main blog page, where other blogs are being listed -->
 
@@ -8,12 +10,12 @@
     <div class="row ">
         {% for post in context %}
         <div class="col-md-8">
-            <h1>{{ post.title}}</h1>
-            {{ post.content |truncatewords_html:20 | safe}}   
+            <h2>{{ post.title}}</h2>
+            {{ post.summary |truncatewords_html:210 | safe}}   
             <a href="/blog/{{post.slug}}" >Read More..</a>
         </div>
         <div class="col-md-4">
-            <img src="/media/{{post.image}}" class="img-thumbnail" width="250px">
+            <img src="{{post.image.url}}" class="img-thumbnail" width="250px">
         </div>
         
         {% endfor %}

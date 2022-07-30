@@ -32,13 +32,12 @@ def blog_page(request):
 	return render(request,'blog.html',{'context':posts})
 	
 def single_post(request, slug):
-    post = models.Post.objects.get(slug=slug)
-    return render(request, 'post.html', {'context': post})
+	post = models.Post.objects.get(slug=slug)
+	return render(request, 'post.html', {'context': post})
 
 
 def nlp_demo(request):
 	text=request.POST.get('textareaName', False)#MultiValueDictKey
-	print(text)
 	if text:
 		sentiment=requests.get("https://brv3cigampej24dwf4xujkomhy0ewcwi.lambda-url.us-east-1.on.aws/{}".format(text))
 		return render(request, 'demo.html',sentiment.json())

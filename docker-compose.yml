@@ -4,7 +4,7 @@ services:
   django_app: #can be any name, this name should match in default conf
     volumes:
       - static_vol:/app/sub_app/static
-      - media_vol:/app/sub_app/media
+    #   - media_vol:/app/sub_app/media
     env_file:
       - .env
     build:
@@ -15,7 +15,7 @@ services:
     build: ./nginx
     volumes:
       - static_vol:/app/sub_app/static
-      - media_vol:/app/sub_app/media
+    #   - media_vol:/app/sub_app/media
     ports:
       - "80:80"
     depends_on:
@@ -23,4 +23,7 @@ services:
 
 volumes:
   static_vol:
-  media_vol:
+#   media_vol:
+
+
+# @as i am using S3 for media file, so i dont need ngign to server them./

@@ -7,3 +7,6 @@ Pillow==9.2.0
 gunicorn
 python-decouple
 psycopg2-binary
+requests
+django-storages
+boto3

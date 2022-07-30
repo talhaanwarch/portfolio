@@ -1,4 +1,4 @@
-<div class="container-xxl py-6 pt-5" id="project">
+<div class="container-xxl py-6 pt-5" id="paper">
     <div class="container">
 
         <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
@@ -14,12 +14,10 @@
             </div> -->
         
             <!-- Accordion code -->
-            {% for paper in papers %}
-          
-
+            
             <div class="accordion accordion-flush" id="accordionFlushExample">
-              
-                <div class="accordion-item">
+              {% for paper in papers %}  
+              <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-heading{{forloop.counter}}">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{forloop.counter}}" aria-expanded="false" aria-controls="flush-collapse{{forloop.counter}}">
                       {{ paper.title }}
@@ -28,13 +26,15 @@
                   <div id="flush-collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{forloop.counter}}" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body"> {{ paper.abstract }}  <a href={{ paper.paper_url }}>Read full paper!!</a> </div>
                   </div>
+              
                 </div>
-               
-            {% endfor %}
+                {% endfor %}
+              </div>
+            
 
-             </div>
+             
             <!-- Accordion code -->
 
         </div>
     </div>
-</div>
+</div> 

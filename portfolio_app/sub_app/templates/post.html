@@ -1,8 +1,10 @@
 {%extends 'base.html' %}
 {% load static %}
+{% block title %}  {{ context.title}} {% endblock %}
+{% block description %} {{ context.summary }} {% endblock %}
 
 {% block content %}
-<img src="/media/{{context.image}}" class="img-thumbnail" >
+<img src="{{ context.image.url }}" class="img-thumbnail" >
 <h1>{{ context.title}}</h1>
 {{ context.content | safe}}   
     
