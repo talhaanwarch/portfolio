@@ -27,41 +27,24 @@
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
 
-
-
-<!-- #on home page dont use this nav bar -->
-  <nav {% if request.path == '/' %} style="display: none;" {% endif %} class="navbar navbar-expand-lg bg-white navbar-light shadow py-lg-0 px-4 px-lg-5 wow fadeIn">
-    <a class="navbar-brand" href="#">Talha</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-0">
-            <a href="{% url 'home' %}" class="nav-item nav-link active">Profile</a>
-            <a href="{% url 'blog' %}" class="nav-item nav-link">Blogs</a>
-            <a href="{% url 'demo' %}" class="nav-item nav-link">Demo</a>
-         </div> 
-        </div>
-  </nav>
-  <!-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow py-lg-0 px-4 px-lg-5 wow fadeIn customnav blog-header" data-wow-delay="0.1s">
+  <nav class="navbar navbar-expand-lg bg-white navbar-light shadow py-lg-0 px-4 px-lg-5 wow fadeIn customnav blog-header" data-wow-delay="0.1s">
  
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
       
-      <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
+      <a href="{% url 'home' %}" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
         <h1 class="text-primary fw-bold m-0">Talha</h1>
       </a>  
       <div class="navbar-nav ms-auto py-0">
-            <a href="#home" class="nav-item nav-link active">Home</a>
-            <a href="#about" class="nav-item nav-link">About</a>
-            <a href="#skill" class="nav-item nav-link">Skills</a>
-            <a href="#project" class="nav-item nav-link">Projects</a>
+        <!-- <a href="{% url 'home' %}" class="nav-item nav-link active">Profile</a> -->
+        <a href="{% url 'blog' %}" class="nav-item nav-link">Blogs</a>
+        <a href="{% url 'demo' %}" class="nav-item nav-link">Demo</a>
     
         </div>
     </div>
-    </nav> -->
+    </nav>
 <!-- ---------bav bar end------------ -->
 <div class="container">  
   <div class="row" style="margin:20px 0px 20px 0px;">

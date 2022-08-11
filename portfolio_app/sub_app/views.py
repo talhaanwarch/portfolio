@@ -94,3 +94,8 @@ async def audio_demo(request):
 
 	else:
 		return render(request, 'demos/audio.html',{})
+
+
+def image_demo(request):
+	
+		return render(request, 'demos/image.html',{})
