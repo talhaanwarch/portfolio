@@ -1,0 +1,67 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{% block title %}  Demo | NLP model demo {% endblock %}
+{% block description %} View the power of AI and natural Language processing by playing with interactive demos {% endblock %}
+
+
+{% block content %}
+
+<h2> Sentiment Analysis</h2>
+<p>Sentiment analysis is the process of determining whether a piece of text is positive, negative, or neutral. It can be used to analyze reviews, tweets, and other forms of text. The huggingface BERT model can be used for sentiment analysis. BERT is a pre-trained model that can be used for many different Natural Language Processing (NLP) tasks. The model is trained on a large corpus of text, so it can be used to analyze text from different domains. The model can be used to classify text as positive, negative, or neutral. It can also be used to identify the sentiment of a text passage. The huggingface BERT model can be used to improve the accuracy of sentiment analysis.</p>
+<p>The sentiment analysis demo use AWS Lambda, a serverless compute service that runs code in response to events and automatically manages the underlying compute resources. To host on AWS lambda, we used FASTapi which is a high performance web framework written in Python. It is built on top of Starlette and utilizes standard ASGI middlewares. Docker is used to overcome the limitations of lambda to host FASTAPI. Further it makes deployment very easy and scaleable. </p>
+<h3>Demo </h3>
+<form id="sentiform" method = "POST">
+    {% csrf_token %}
+<div class="character-count js-character-count">
+    <label class="form-label margin-bottom-xxs" for="textareaName">Textarea:</label>
+    
+    <textarea class="form-control width-100% js-character-count__input" name="textareaName" id="textareaName" maxlength="300"></textarea>
+    
+    <div class="character-count__helper character-count__helper--dynamic text-sm margin-top-xxxs" aria-live="polite" aria-atomic="true">
+      You have <span class="js-character-count__counter"></span> characters left
+    </div>
+  
+    <div class="character-count__helper character-count__helper--static text-sm margin-top-xxxs">Max 300 characters</div>
+  </div>
+  <div>
+  <button class="btn btn-primary" type="submit">Analyze</button>
+  <!-- <input class="btn btn-primary" type="submit" value="submit" id="submit-button"> -->
+    </div>
+<div>
+</form>
+
+
+<div style="padding-top: 20px; padding-bottom: 40px;">
+
+<center>
+  <h3>Sentiment Score</h3>
+
+<div class="progress" style="max-width: 60%">
+  <div class="progress-bar bg-success"
+     >
+      
+  </div>
+  <div class="progress-bar bg-warning
+      progress-bar-stripped" >
+     
+  </div>
+  <div class="progress-bar bg-danger
+      progress-bar-stripped" >
+      
+  </div>
+</div>
+</center>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block page_scripts %} 
+<script src='{% static "js/demo_nlp_ajax.js" %}' ></script>
+{% endblock %}
+
+

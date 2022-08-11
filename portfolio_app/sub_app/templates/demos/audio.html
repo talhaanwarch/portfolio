@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block title %}  Emotion detection from audio demo {% endblock %}
+{% block description %} Record your voice in urdu and get your emotion classified in a speed {% endblock %}
+
+
+{% block content %}
+
+<h2> Emtion Detection fom Urdu Audio</h2>
+  <p>
+  Facebook wav2vec is a tool that can be used to automatically recognize emotions from audio recordings. 
+  It is based on the idea that raw audio can be represented as a sequence of discrete events, and that these events can be learned using a neural network. The tool can be used to learn representations for speech, music, and other types of audio  The tool can be used to recognize a variety of emotions, including happiness, sadness, anger, and neutral.</p>
+  <p>In this demo, we only consider <strong>URDU</strong> language. For good result record <strong>5 seconds</strong> audio</p>
+
+  <h2>Demo</h2>
+  <center>
+  <p>
+    {% csrf_token %}
+
+    <button class="btn btn-primary py-3 px-5" id=record>Record</button>
+    <button class="btn btn-primary py-3 px-5" id=stopRecord disabled>Stop</button>
+  </p>
+  <p>
+    <audio id=recordedAudio></audio>
+  </p>
+  <h4 id="result" > Result</h4> 
+</center>
+
+{% endblock %}
+
+{% block page_scripts %} 
+<script src='{% static "js/demo_audio_ajax.js" %}' ></script>
+{% endblock %}

@@ -488,6 +488,8 @@ body{
     background-clip: border-box;
     border: 1px solid #e6e4e9;
     border-radius: 8px;
+    margin-bottom: 15px;
+  
 }
 
 .card .card-header.no-border {
@@ -798,4 +800,14 @@ Usage: codyhouse.co/license
 
 .character-count__helper--dynamic {
   display: block;
+}
+
+.blog-header{
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  display: block !important;
 }

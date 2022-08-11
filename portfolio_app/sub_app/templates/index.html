@@ -1,4 +1,4 @@
-{%extends 'base.html' %}
+<!-- {%extends 'base.html' %} -->
 {% load static %}
 {% block title %} Talha Anwar | Machine Learning Engineer {% endblock %}
 {% block description %} I am Talha Anwar, a data scientist, machine learning engineer with special interest in deep learning, computer vision and nlp {% endblock %}
@@ -66,4 +66,8 @@
     </div>
     <!-- Map End -->
 
+{% endblock %}
+{% block page_scripts %} 
+<script src='{% static "js/contact_ajax.js" %}' ></script>
+<script src='{% static "js/main.js" %}' ></script>
 {% endblock %}
