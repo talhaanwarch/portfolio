@@ -8,6 +8,8 @@ import base64
 import json
 import random
 import httpx
+#from django.core.files.storage import default_storage
+#from io import BytesIO
 
 def send_eamil(request):
 	name=request.POST['name']
@@ -63,34 +65,35 @@ def nlp_demo(request):
 		return render(request, 'demos/nlp.html',{})
 
 
-async def audio_demo(request):
+def audio_demo(request):
 
 	"""page for audio emotion anaylis demo"""
 
 	if request.method=='POST':
 		req=request.POST.get('data')
 		d=req.split(",")[1]
-		file_name='sub_app/media/file_{}.oga'.format(random.randint(0,99))
-		with open(file_name, 'wb') as f:
-			f.write(base64.b64decode(d))
+
+	
+		# file_content_io = BytesIO(base64.b64decode(d))
+		# s3_path='audio/file_name_{}.ogg'.format(random.randint(0,99))
+		# default_storage.save(s3_path, file_content_io)
+
 
 		API_URL = "https://api-inference.huggingface.co/models/Talha/urdu-audio-emotions"
 		headers = {"Authorization": "Bearer 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"}
 		
-		with open(file_name, "rb") as f:
-			data = f.read()
-			
-		async with httpx.AsyncClient() as client:
-			response = await client.post(API_URL, headers=headers, data=data)
-			x=json.loads(response.content.decode("utf-8"))
-			try:
-				d={}
-				for l in x:
-					d.update({l['label']:round(l['score']*100)})
-				return JsonResponse(d,safe=False)
-			except Exception as e:
-				print(x)
-				return HttpResponse("Try again")
+
+		data=base64.b64decode(d)
+		response = requests.post(API_URL, headers=headers, data=data)
+		x=json.loads(response.content.decode("utf-8"))
+		try:
+			d={}
+			for l in x:
+				d.update({l['label']:round(l['score']*100)})
+			return JsonResponse(d,safe=False)
+		except Exception as e:
+			print(x)
+			return HttpResponse("Try again")
 
 	else:
 		return render(request, 'demos/audio.html',{})

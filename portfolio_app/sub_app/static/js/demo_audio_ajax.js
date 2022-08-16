@@ -1,7 +1,5 @@
 navigator.mediaDevices.getUserMedia({audio:true})
 .then(stream => {handlerFunction(stream)})
-
-
       function handlerFunction(stream) {
       rec = new MediaRecorder(stream);
       rec.ondataavailable = e => {
@@ -11,7 +9,6 @@ navigator.mediaDevices.getUserMedia({audio:true})
           recordedAudio.src = URL.createObjectURL(blob);
           recordedAudio.controls=true;
           recordedAudio.autoplay=true;
-          console.log(blob)
           sendData(blob)
         }
       }
