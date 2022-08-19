@@ -8,6 +8,7 @@ import base64
 import json
 import random
 import httpx
+import re
 #from django.core.files.storage import default_storage
 #from io import BytesIO
 
@@ -16,6 +17,10 @@ def send_eamil(request):
 	email=request.POST['email']
 	subject=request.POST['subject']
 	message=request.POST['message']
+	
+	if re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', message):
+		print("it's URL")
+		return False
 	if (len(name)>3 and len(email)>8 and len(subject)>5 and len(message) >25):
 		send_mail(
 				subject=subject,
