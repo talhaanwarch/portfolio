@@ -1,0 +1,57 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{% block title %}  Demo | Heart Rate {% endblock %}
+{% block description %} Get heart rate value via mobile camera video {% endblock %}
+
+
+{% block content %}
+
+<h2> Heart Rate detection via mobile camera</h2>
+
+<p>This model is being trained on a small public available dataset,
+so this is not 100% accurate. Though this model has high potentital 
+and expected error is rate is around 10 bpm. </p>
+
+<p><strong>In order to get your heart rate upload video of 10-15 seconds.</strong></p>
+
+<p>We are not using any face detection algorithm as initial screening layer.
+  We assume that every one using this demo is capturing the face. 
+  If some thing else is captured, it will still show results, but they
+  will be incorrect.
+</p>
+
+<p><strong>The light should be sufficient and the head motion should 
+  be minimum to get accurate results.
+</strong></p>
+
+<h4>Notes</h4>
+<p>
+When first time video is captured or uploaded, the server spins up, which will take some time.
+The server duration is 15 minutes and it will be down after 15 minutes and a new 
+instance is started. This is one of the reason for slow response but its still
+good enough for demo purpose.</p>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8"><form action = "" method = "post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <ul style="list-style: none;">
+        
+        <label for="video">Video:</label>
+        <p id="video" class="">{{ form.file }}</p>
+        <li><input style="text-align:center; margin-top: 12px;" type="submit" value="Submit"></li>
+    </ul>
+
+  
+</form>
+
+<h3>{{ heart_rate }}</h3>
+
+
+{% endblock %}
+
+{% block page_scripts %} 
+<script src='{% static "js/demo_nlp_ajax.js" %}' ></script>
+{% endblock %}
+

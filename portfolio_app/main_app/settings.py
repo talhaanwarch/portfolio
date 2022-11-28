@@ -161,8 +161,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 AWS_STORAGE_BUCKET_NAME = config('bucket_name')
 AWS_ACCESS_KEY_ID =config('aws_access')
 AWS_SECRET_ACCESS_KEY = config('aws_secret')
-
-
+AWS_DATA_BUCKET_NAME= config('databucket')
+AWS_REGION=config('aws_region')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
@@ -171,3 +171,5 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 # # STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 # # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'main_app.storages.MediaStore'
+
+VITAL_API= config('vital_api_url')

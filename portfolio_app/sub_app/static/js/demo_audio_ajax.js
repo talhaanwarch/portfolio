@@ -2,6 +2,7 @@ navigator.mediaDevices.getUserMedia({audio:true})
 .then(stream => {handlerFunction(stream)})
       function handlerFunction(stream) {
       rec = new MediaRecorder(stream);
+      console.log('codec',MediaRecorder.isTypeSupported('audio/ogg;codecs=mp3'));
       rec.ondataavailable = e => {
         audioChunks.push(e.data);
         if (rec.state == "inactive"){

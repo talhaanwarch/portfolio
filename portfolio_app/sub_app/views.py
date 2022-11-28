@@ -9,6 +9,10 @@ import json
 import random
 import httpx
 import re
+import boto3
+from .forms import UploadFileForm
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 #from django.core.files.storage import default_storage
 #from io import BytesIO
 
@@ -35,12 +39,12 @@ def send_eamil(request):
 def home(request):
 	posts = models.Post.objects.all()[:3]
 	papers = models.Papers.objects.all()
-	if request.method=='POST':
-		bools=send_eamil(request)
-		if bools:
-			return HttpResponse('Email Sent!')
-		else:
-			return HttpResponse('Email Not Sent!')
+	# if request.method=='POST':
+	# 	bools=send_eamil(request)
+	# 	if bools:
+	# 		return HttpResponse('Email Sent!')
+	# 	else:
+	# 		return HttpResponse('Email Not Sent!')
 
 	return render(request,'index.html',{'blogs':posts,"papers":papers})
 
@@ -107,3 +111,28 @@ def audio_demo(request):
 def image_demo(request):
 	
 		return render(request, 'demos/image.html',{})
+
+def botoclient(file_name):
+	s3 = boto3.resource('s3',
+		region_name=settings.AWS_REGION,
+		aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+		aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+	bucket = s3.Bucket(settings.AWS_DATA_BUCKET_NAME)
+	bucket.put_object(Body=file_name, Key='videos/'+file_name.name)
+	return file_name.name
+
+
+def vitals_demo(request):
+	if request.method == 'POST':
+		form = UploadFileForm(request.POST, request.FILES)
+		if form.is_valid():
+			print('file upload',request.FILES['file'])
+			name=botoclient(request.FILES['file'])
+			url='{}?video_file={}'.format(settings.VITAL_API,name)
+			resp = requests.get(url)
+			
+			return render(request, 'demos/vitals.html', {'form': form,'heart_rate':resp.json()})
+	else:
+		form = UploadFileForm()
+		return render(request, 'demos/vitals.html', {'form': form})
+	

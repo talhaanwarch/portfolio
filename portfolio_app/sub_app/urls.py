@@ -8,5 +8,6 @@ urlpatterns = [
     path('demo/nlp/',views.nlp_demo,name='nlpdemo'),
     path('demo/audio/',views.audio_demo,name='audiodemo'),
     path('demo/image/',views.image_demo,name='imagedemo'),
+    path('demo/vitals/',views.vitals_demo,name='vitalsdemo'),
     path('blog/<slug:slug>', views.single_post),
     ]
