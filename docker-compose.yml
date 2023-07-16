@@ -11,18 +11,32 @@ services:
       context: .
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
+
   nginx:
     build: ./nginx
     volumes:
       - static_vol:/app/sub_app/static
     #   - media_vol:/app/sub_app/media
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - django_app
 
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    env_file:
+      - .env
+    volumes:
+      - sqldb:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
 volumes:
   static_vol:
+  sqldb:
 #   media_vol:
 
 
