@@ -14,30 +14,20 @@ services:
     depends_on:
       - postgres
 
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_vol:/app/sub_app/static
-    #   - media_vol:/app/sub_app/media
-    ports:
-      - "8080:80"
-    depends_on:
-      - django_app
-
   postgres:
     image: postgres:latest
-    container_name: postgres
+    container_name: portfolio_postgres
     env_file:
       - .env
     volumes:
       - sqldb:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5433:5433"
+    command: -p 5433
+  
 
 volumes:
   static_vol:
   sqldb:
 #   media_vol:
 
-
-# @as i am using S3 for media file, so i dont need ngign to server them./
