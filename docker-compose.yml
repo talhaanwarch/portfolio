@@ -1,28 +1,18 @@
 version: '3'
-
 services:
-  django_app: #can be any name, this name should match in default conf
+  django_app:
+    container_name: my-portfolio-app
     volumes:
       - static_vol:/app/sub_app/static
-    #   - media_vol:/app/sub_app/media
     env_file:
       - .env
     build:
       context: .
-    ports:
-      - "8000:8000"
+   
     depends_on:
       - postgres
-
-  nginx:
-    build: ./nginx
-    volumes:
-      - static_vol:/app/sub_app/static
-    #   - media_vol:/app/sub_app/media
-    ports:
-      - "8080:80"
-    depends_on:
-      - django_app
+    networks:
+      - mynetwork
 
   postgres:
     image: postgres:latest
@@ -31,13 +21,13 @@ services:
       - .env
     volumes:
       - sqldb:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
+    networks:
+      - mynetwork
 
 volumes:
   static_vol:
   sqldb:
-#   media_vol:
 
-
-# @as i am using S3 for media file, so i dont need ngign to server them./
+networks:
+  mynetwork:
+    external: true
