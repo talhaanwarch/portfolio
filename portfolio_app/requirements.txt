@@ -12,4 +12,5 @@ django-storages
 boto3
 django-htmlmin
 httpx
+whitenoise
 boto3
